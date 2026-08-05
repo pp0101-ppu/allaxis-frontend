@@ -4,4 +4,12 @@ const api = axios.create({
     baseURL: 'https://allaxis-backend-production.up.railway.app/api/',
 });
 
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem('admin_token');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
 export default api;
