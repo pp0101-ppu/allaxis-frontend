@@ -26,7 +26,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
                     <h4>Get In Touch</h4>
                     <a href="#contact">Contact Us</a>
                     <a href="mailto:allaxistechnologies@gmail.com">allaxistechnologies@gmail.com</a>
-                           <a>+977 9843000161</a>
+                           <a>+977 9851445346</a>
                 </div>
                 <div class="link-group">
                     <h4>Follow Us</h4>
