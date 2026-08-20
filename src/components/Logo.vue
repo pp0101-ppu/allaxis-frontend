@@ -1,9 +1,10 @@
 <template>
-    <img src="/logo.png" alt="AllAxis Technologies" class="logo-img" />
+    <img src="/logowhite.png" alt="AllAxis Technologies" class="logo-img" />
 </template>
 
 <style scoped>
 .logo-img {
-    height: 40px;
+    height: 34px;
+    display: block;
 }
 </style>

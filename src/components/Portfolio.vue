@@ -22,8 +22,8 @@ onMounted(async () => {
 <template>
     <section class="portfolio" id="portfolio">
         <div class="section-header">
-            <h2>Our Work</h2>
-            <p>A closer look at what we've built.</p>
+            <span class="eyebrow">Our Work</span>
+            <h2>A closer look at what we've built</h2>
         </div>
 
         <div v-if="loading" class="state-message">Loading portfolio...</div>
@@ -32,7 +32,14 @@ onMounted(async () => {
 
         <div v-else class="portfolio-grid">
             <div class="portfolio-card" v-for="project in projects" :key="project.id">
-                <img :src="project.cover_image" :alt="project.title" />
+                <div class="image-wrap">
+                    <img
+                        v-if="project.cover_image"
+                        :src="project.cover_image"
+                        :alt="project.title"
+                    />
+                    <div v-else class="image-placeholder">📷</div>
+                </div>
                 <div class="overlay">
                     <span class="category">{{ project.category || 'Project' }}</span>
                     <h3>{{ project.title }}</h3>
@@ -47,50 +54,76 @@ onMounted(async () => {
     padding: 120px 48px;
     max-width: 1200px;
     margin: 0 auto;
+    background: var(--bg-light);
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 64px;
+    margin-bottom: 56px;
 }
 
-.section-header h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+.eyebrow {
+    display: inline-block;
+    color: var(--primary);
+    font-weight: 1000;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin-bottom: 12px;
 }
 
-.section-header p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1.1rem;
+.section-header h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--text-dark);
 }
 
 .state-message {
     text-align: center;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
     padding: 40px;
 }
 
 .portfolio-grid {
-    columns: 2;
-    column-gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
 }
 
 .portfolio-card {
     position: relative;
-    break-inside: avoid;
-    margin-bottom: 24px;
     border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 4px 20px rgba(10, 14, 26, 0.06);
 }
 
-.portfolio-card img {
+.image-wrap {
     width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #eef1f6;
+}
+
+.image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
     transition: transform 0.5s ease;
 }
 
-.portfolio-card:hover img {
+.portfolio-card:hover .image-wrap img {
     transform: scale(1.08);
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: rgba(10, 14, 26, 0.2);
 }
 
 .overlay {
@@ -99,8 +132,8 @@ onMounted(async () => {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 24px;
-    background: linear-gradient(to top, rgba(5,5,5,0.9) 0%, transparent 60%);
+    padding: 20px;
+    background: linear-gradient(to top, rgba(5,5,5,0.85) 0%, transparent 55%);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -110,21 +143,16 @@ onMounted(async () => {
 }
 
 .category {
-    color: var(--primary);
-    font-size: 0.8rem;
+    color: var(--primary-light);
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .overlay h3 {
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-    .portfolio-grid {
-        columns: 1;
-    }
+    font-size: 1.05rem;
+    color: white;
 }
 </style>

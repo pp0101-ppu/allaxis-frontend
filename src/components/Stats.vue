@@ -63,10 +63,10 @@ onMounted(() => {
     gap: 32px;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 80px 48px;
+    padding: 40px 48px 120px;
     text-align: center;
+    background: transparent;
 }
-
 .stat-number {
     font-family: var(--font-heading);
     font-size: clamp(2.5rem, 5vw, 3.5rem);
@@ -76,7 +76,7 @@ onMounted(() => {
 }
 
 .stat-label {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.95rem;
+    color: rgb(0, 0, 0);
+    font-size: 1.3rem;
 }
 </style>

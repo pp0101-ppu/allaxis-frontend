@@ -21,6 +21,6 @@ const handleLogout = () => {
 <style scoped>
 .dashboard {
     padding: 48px;
-    color: white;
+    color: rgb(20, 7, 7);
 }
 </style>

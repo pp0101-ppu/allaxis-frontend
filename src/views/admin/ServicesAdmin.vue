@@ -2,6 +2,11 @@
 import { ref, onMounted } from 'vue';
 import api from '../../api/axios';
 
+const iconOptions = [
+    '🗺️', '💻', '📈', '🎨', '📱', '☁️', '🔒', '⚙️', '📊', '🎯',
+    '🚀', '🖥️', '📡', '🔧', '💡', '🌐', '📸', '🎬', '🛠️', '📦',
+];
+
 const services = ref([]);
 const loading = ref(true);
 const showForm = ref(false);
@@ -9,8 +14,9 @@ const editingId = ref(null);
 
 const form = ref({
     title: '',
-    category: '3d_mapping',
+    category: '',
     description: '',
+    icon_or_image: '⚙️',
     is_featured: false,
 });
 
@@ -25,7 +31,7 @@ onMounted(fetchServices);
 
 const openCreateForm = () => {
     editingId.value = null;
-    form.value = { title: '', category: '3d_mapping', description: '', is_featured: false };
+    form.value = { title: '', category: '', description: '', icon_or_image: '⚙️', is_featured: false };
     showForm.value = true;
 };
 
@@ -33,8 +39,9 @@ const openEditForm = (service) => {
     editingId.value = service.id;
     form.value = {
         title: service.title,
-        category: service.category,
+        category: service.category || '',
         description: service.description,
+        icon_or_image: service.icon_or_image || '⚙️',
         is_featured: service.is_featured,
     };
     showForm.value = true;
@@ -69,6 +76,7 @@ const deleteService = async (id) => {
         <table v-else class="data-table">
             <thead>
                 <tr>
+                    <th>Icon</th>
                     <th>Title</th>
                     <th>Category</th>
                     <th>Featured</th>
@@ -77,8 +85,9 @@ const deleteService = async (id) => {
             </thead>
             <tbody>
                 <tr v-for="service in services" :key="service.id">
+                    <td class="icon-cell">{{ service.icon_or_image || '⚙️' }}</td>
                     <td>{{ service.title }}</td>
-                    <td>{{ service.category }}</td>
+                    <td>{{ service.category || '—' }}</td>
                     <td>{{ service.is_featured ? 'Yes' : 'No' }}</td>
                     <td class="actions">
                         <button @click="openEditForm(service)">Edit</button>
@@ -91,12 +100,23 @@ const deleteService = async (id) => {
         <div v-if="showForm" class="modal-overlay" @click.self="showForm = false">
             <form class="modal-form" @submit.prevent="saveService">
                 <h2>{{ editingId ? 'Edit' : 'Add' }} Service</h2>
+
+                <label class="field-label">Icon</label>
+                <div class="icon-picker">
+                    <button
+                        type="button"
+                        v-for="icon in iconOptions"
+                        :key="icon"
+                        class="icon-option"
+                        :class="{ selected: form.icon_or_image === icon }"
+                        @click="form.icon_or_image = icon"
+                    >
+                        {{ icon }}
+                    </button>
+                </div>
+
                 <input v-model="form.title" placeholder="Title" required />
-                <select v-model="form.category">
-                    <option value="3d_mapping">3D Mapping</option>
-                    <option value="web_development">Web Development</option>
-                     <option value="digital_marketing">Digital Marketing</option>
-                </select>
+                <input v-model="form.category" placeholder="Category (optional, e.g. 'Web Development')" />
                 <textarea v-model="form.description" placeholder="Description" rows="4" required></textarea>
                 <label class="checkbox-label">
                     <input type="checkbox" v-model="form.is_featured" /> Featured
@@ -111,7 +131,7 @@ const deleteService = async (id) => {
 </template>
 
 <style scoped>
-.admin-page { color: white; }
+.admin-page { color: rgb(20, 16, 16); }
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -136,10 +156,13 @@ const deleteService = async (id) => {
     padding: 12px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
 }
+.icon-cell {
+    font-size: 1.3rem;
+}
 .actions button {
     background: transparent;
     border: 1px solid rgba(255,255,255,0.15);
-    color: white;
+    color: rgb(243, 9, 9);
     padding: 6px 12px;
     border-radius: 6px;
     margin-right: 8px;
@@ -163,17 +186,45 @@ const deleteService = async (id) => {
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 12px;
     padding: 32px;
-    width: 400px;
+    width: 440px;
+    max-height: 85vh;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
-.modal-form input, .modal-form select, .modal-form textarea {
+.field-label {
+    font-size: 0.85rem;
+    color: rgba(233, 228, 228, 0.6);
+    margin-bottom: -6px;
+}
+.icon-picker {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+.icon-option {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 8px;
     padding: 10px;
-    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+.icon-option:hover {
+    background: rgba(255,255,255,0.1);
+}
+.icon-option.selected {
+    border-color: var(--primary);
+    background: rgba(0, 102, 255, 0.15);
+}
+.modal-form input, .modal-form textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 10px;
+    color: rgb(226, 218, 218);
 }
 .checkbox-label {
     display: flex;

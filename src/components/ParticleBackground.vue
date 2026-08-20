@@ -28,13 +28,12 @@ onMounted(() => {
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-    const material = new THREE.PointsMaterial({
-        color: 0x00d4ff,
-        size: 0.02,
-        transparent: true,
-        opacity: 0.7,
-    });
-
+   const material = new THREE.PointsMaterial({
+    color: 0x0066ff,
+    size: 0.02,
+    transparent: true,
+    opacity: 0.7,
+});
     particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
@@ -83,5 +82,6 @@ onMounted(() => {
     inset: 0;
     z-index: 0;
     pointer-events: none;
+    overflow: hidden;
 }
 </style>

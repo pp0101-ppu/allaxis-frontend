@@ -19,25 +19,49 @@ onMounted(async () => {
 
 <template>
     <section class="testimonials" id="testimonials">
-        <div class="section-header">
-            <h2>What Clients Say</h2>
+
+        <div v-if="loading" class="state-message">
+            Loading testimonials...
         </div>
 
-        <div v-if="loading" class="state-message">Loading testimonials...</div>
-        <div v-else-if="testimonials.length === 0" class="state-message">No testimonials added yet.</div>
+        <div
+            v-else-if="testimonials.length === 0"
+            class="state-message"
+        >
+            No testimonials added yet.
+        </div>
 
         <div v-else class="marquee-wrapper">
+
+            <!-- Heading inside the colored band -->
+            <div class="section-header">
+                <h2>What Clients Say</h2>
+            </div>
+
+            <!-- Moving testimonials -->
             <div class="marquee-track">
-                <!-- Render the list twice so the loop appears seamless -->
-                <div class="testimonial-card" v-for="t in [...testimonials, ...testimonials]" :key="t.id + '-' + Math.random()">
-                    <p class="quote">"{{ t.quote }}"</p>
+
+                <div
+                    class="testimonial-card"
+                    v-for="(t, index) in [...testimonials, ...testimonials]"
+                    :key="`${t.id}-${index}`"
+                >
+                    <p class="quote">
+                        "{{ t.quote }}"
+                    </p>
+
                     <div class="client">
                         <strong>{{ t.client_name }}</strong>
-                        <span v-if="t.client_company">{{ t.client_company }}</span>
+
+                        <span v-if="t.client_company">
+                            {{ t.client_company }}
+                        </span>
                     </div>
                 </div>
+
             </div>
         </div>
+
     </section>
 </template>
 
@@ -55,61 +79,122 @@ onMounted(async () => {
 
 .section-header h2 {
     font-size: clamp(2rem, 4vw, 3rem);
+    color: #ffffff;
 }
 
 .state-message {
     text-align: center;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.7);
     padding: 40px;
 }
 
+/* Primary color band */
 .marquee-wrapper {
     width: 100%;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+
+    background: var(--primary);
+
+    padding: 100px 0;
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+    );
 }
 
 .marquee-track {
     display: flex;
     gap: 24px;
     width: max-content;
+
     animation: scroll 30s linear infinite;
 }
 
-.marquee-track:hover {
-    animation-play-state: paused;
-}
 
+/* White testimonial cards */
 .testimonial-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    background: #ffffff;
+
+    border: none;
+    border-radius: 18px;
+
     padding: 32px;
+
     width: 340px;
+    min-height: 190px;
+
     flex-shrink: 0;
-    backdrop-filter: blur(10px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .quote {
     font-size: 0.95rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 20px;
+    line-height: 1.7;
+
+    color: #222222;
+
+    margin: 0 0 24px;
 }
 
 .client strong {
     display: block;
     font-size: 0.95rem;
+    color: #111111;
 }
 
 .client span {
+    display: block;
+
+    margin-top: 4px;
+
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: #6b7280;
 }
 
 @keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 600px) {
+    .testimonials {
+        padding: 80px 0;
+    }
+
+    .section-header {
+        padding: 0 20px;
+        margin-bottom: 45px;
+    }
+
+    .marquee-wrapper {
+        padding: 35px 0;
+    }
+
+    .testimonial-card {
+        width: 290px;
+        padding: 26px;
+    }
 }
 </style>

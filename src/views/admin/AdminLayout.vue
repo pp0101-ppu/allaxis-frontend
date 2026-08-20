@@ -22,6 +22,7 @@ const handleLogout = () => {
                 <RouterLink to="/admin/testimonials">Testimonials</RouterLink>
                 <RouterLink to="/admin/inquiries">Inquiries</RouterLink>
                 <RouterLink to="/admin/product-categories">Categories</RouterLink>
+                <RouterLink to="/admin/clients">Clients</RouterLink>
             </nav>
             <button class="logout-btn" @click="handleLogout">Logout</button>
         </aside>
@@ -40,7 +41,7 @@ const handleLogout = () => {
 .sidebar {
     width: 220px;
     background: rgba(255,255,255,0.03);
-    border-right: 1px solid rgba(255,255,255,0.08);
+    border-right: 1px solid rgba(5, 0, 0, 0.74);
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -58,17 +59,17 @@ nav {
 nav a {
     padding: 10px 12px;
     border-radius: 8px;
-    color: rgba(255,255,255,0.7);
+    color: rgba(17, 1, 1, 0.7);
     font-size: 0.9rem;
 }
 nav a:hover {
     background: rgba(255,255,255,0.05);
-    color: white;
+    color: rgb(19, 17, 17);
 }
 .logout-btn {
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(14, 1, 1, 0.15);
+    color: rgba(24, 2, 2, 0.7);
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;

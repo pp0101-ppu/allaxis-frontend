@@ -99,12 +99,12 @@ const deleteTestimonial = async (id) => {
 </template>
 
 <style scoped>
-.admin-page { color: white; }
+.admin-page { color: rgb(12, 1, 1); }
 .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
 .btn-primary { background: var(--primary); color: #050505; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; }
 .data-table { width: 100%; border-collapse: collapse; }
 .data-table th, .data-table td { text-align: left; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.actions button { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: white; padding: 6px 12px; border-radius: 6px; margin-right: 8px; cursor: pointer; }
+.actions button { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: rgb(241, 234, 234); padding: 6px 12px; border-radius: 6px; margin-right: 8px; cursor: pointer; }
 .delete-btn { border-color: rgba(248,113,113,0.4) !important; color: #f87171 !important; }
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 100; }
 .modal-form { background: #0d0d0d; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 32px; width: 400px; display: flex; flex-direction: column; gap: 14px; }

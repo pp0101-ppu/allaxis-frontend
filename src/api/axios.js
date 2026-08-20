@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://allaxis-backend-production.up.railway.app/api/',
+    baseURL: 'allaxis-backend-production.up.railway.app',
 });
 
 api.interceptors.request.use((config) => {

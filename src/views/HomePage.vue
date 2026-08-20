@@ -9,18 +9,24 @@ import Portfolio from '../components/Portfolio.vue';
 import Testimonials from '../components/Testimonials.vue';
 import ContactForm from '../components/ContactForm.vue';
 import Footer from '../components/Footer.vue';
-
+import FadeZone from '../components/FadeZone.vue';
+import Clients from '../components/Clients.vue';
+import About from '../components/composables/About.vue';
 const introDone = ref(false);
 </script>
 
 <template>
     <IntroAnimation @complete="introDone = true" />
     <NavBar />
-    <Hero />
-    <Services />
-    <Stats />
+    <FadeZone>
+        <Hero />
+        <Services />
+        <Stats />
+    </FadeZone>
     <Portfolio />
-    <Testimonials />
+    <Testimonials /> <Clients />
+    <About />
     <ContactForm />
     <Footer />
+   
 </template>

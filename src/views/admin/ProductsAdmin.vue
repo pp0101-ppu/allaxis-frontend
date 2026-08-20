@@ -166,7 +166,7 @@ const handleImageUpload = async (event, productId) => {
 </template>
 
 <style scoped>
-.admin-page { color: white; }
+.admin-page { color: rgb(14, 1, 1); }
 .page-header {
     display: flex;
     justify-content: space-between;

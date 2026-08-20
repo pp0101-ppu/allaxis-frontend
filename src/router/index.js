@@ -10,6 +10,7 @@ import ProductCategoriesAdmin from '../views/admin/ProductCategoriesAdmin.vue';
 import PortfolioAdmin from '../views/admin/PortfolioAdmin.vue';
 import TestimonialsAdmin from '../views/admin/TestimonialsAdmin.vue';
 import InquiriesAdmin from '../views/admin/InquiriesAdmin.vue';
+import ClientsAdmin from '../views/admin/ClientsAdmin.vue';
 
 const routes = [
     { path: '/', component: HomePage },
@@ -26,6 +27,7 @@ const routes = [
             { path: 'portfolio', component: PortfolioAdmin },
             { path: 'testimonials', component: TestimonialsAdmin },
             { path: 'inquiries', component: InquiriesAdmin },
+            { path: 'clients', component: ClientsAdmin },
         ],
     },
 ];

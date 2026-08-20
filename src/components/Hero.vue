@@ -20,10 +20,15 @@ onMounted(() => {
                 3D Mapping · Web Development · Technology Solutions —
                 engineering every dimension of your digital world.
             </p>
-            <div class="hero-actions">
-                <button class="btn-primary">Explore Our Work</button>
-                <button class="btn-secondary">Book a Demo</button>
-            </div>
+           <div class="hero-actions">
+    <a href="#portfolio" class="btn-primary">
+        Explore Our Work
+    </a>
+
+    <a href="#contact" class="btn-secondary">
+        Book a Free Demo
+    </a>
+</div>
         </div>
     </section>
 </template>
@@ -38,7 +43,8 @@ onMounted(() => {
     padding: 120px 24px 24px;
     position: relative;
     overflow: hidden;
-    background: radial-gradient(circle at 50% 30%, rgba(122, 95, 255, 0.15), transparent 60%);
+    isolation: isolate;
+    background: transparent;
 }
 
 .hero-content {
@@ -46,17 +52,13 @@ onMounted(() => {
     position: relative;
     z-index: 2;
 }
-
 .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #ffffff 30%, var(--primary));
+    background: linear-gradient(135deg, #ffffff 30%, var(--primary-light));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-bottom: 24px;
 }
+
 
 .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.25rem);
@@ -82,22 +84,19 @@ onMounted(() => {
 
 .btn-primary {
     background: var(--primary);
-    color: #050505;
+    color: white;
 }
-
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.4);
 }
-
 .btn-secondary {
     background: transparent;
-    color: var(--accent);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border: 1px solid rgba(248, 243, 243, 0.2);
 }
 
 .btn-secondary:hover {
     border-color: var(--primary);
-    color: var(--primary);
+    color: var(--primary-light);
 }
 </style>

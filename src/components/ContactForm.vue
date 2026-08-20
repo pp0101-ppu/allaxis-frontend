@@ -35,7 +35,7 @@ const submitForm = async () => {
 <template>
     <section class="contact" id="contact">
         <div class="section-header">
-            <h2>Get In Touch</h2>
+            <h2>Get In</h2>  <h3>Touch</h3>
             <p>Tell us about your project — we'll get back to you shortly.</p>
         </div>
 
@@ -79,10 +79,15 @@ const submitForm = async () => {
 .section-header h2 {
     font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 12px;
+    color: rgba(1, 2, 8, 0.979);
 }
-
+.section-header h3 {
+    font-size: clamp(4rem, 4vw, 3rem);
+    margin-bottom: 12px;
+    color: rgba(2, 26, 241, 0.979);
+}
 .section-header p {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(12, 1, 1, 0.979);
 }
 
 .contact-form {
@@ -117,7 +122,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 input::placeholder, textarea::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(19, 1, 1, 0.4);
 }
 
 textarea {
@@ -126,7 +131,7 @@ textarea {
 
 .btn-primary {
     background: var(--primary);
-    color: #050505;
+    color: #f5f1f1;
     border: none;
     padding: 14px 32px;
     border-radius: 10px;

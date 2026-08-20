@@ -70,13 +70,13 @@ const deleteInquiry = async (id) => {
 </template>
 
 <style scoped>
-.admin-page { color: white; }
+.admin-page { color: rgb(20, 1, 1); }
 .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-.page-header select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 12px; color: white; }
+.page-header select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 12px; color: rgb(15, 0, 0); }
 .data-table { width: 100%; border-collapse: collapse; }
 .data-table th, .data-table td { text-align: left; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
-.message-cell { max-width: 260px; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
-.muted { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
-.data-table select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 6px 8px; color: white; }
+.message-cell { max-width: 260px; font-size: 0.85rem; color: rgba(10, 0, 0, 0.7); }
+.muted { color: rgba(12, 1, 1, 0.5); font-size: 0.85rem; }
+.data-table select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 6px 8px; color: rgb(32, 1, 1); }
 .delete-btn { background: transparent; border: 1px solid rgba(248,113,113,0.4); color: #f87171; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
 </style>
